@@ -23,7 +23,7 @@ class Itemaccueil extends Component{
                 <div className="tab-content" >
                     <div className="tab-pane fade show active p-3" role="tabpanel" aria-labelledby="one-tab">
                         <p className="card-text">
-                            <img className="img-fluid img-thumbnail" width="100%" src="https://media.cdnws.com/_i/18871/31389/2825/92/bmx-subrosa-sono-xl-satin-army-green-2019.jpeg" />
+                            <img className="rounded float-center img-fluid img-thumbnail" width="50%" src="https://media.cdnws.com/_i/18871/31389/2825/92/bmx-subrosa-sono-xl-satin-army-green-2019.jpeg" />
                         </p>
                         <h5 className="card-title text-dark"></h5>
                         <p className="card-text  text-dark">Le BMX RADIO Bike Dice 20 pouces et ...</p>

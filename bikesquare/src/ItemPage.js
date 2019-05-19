@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM, {render} from 'react-dom';
 // import { Nav, Navbar, NavItem, MenuItem, NavDropdown, Modal, Jumbotron, Alert } from 'react-bootstrap';
 import Mainfreestyle from './freestyle/MainFreestyle.js';
-import Accueil from './accueil/Accueil.js'
+import Accueil from './accueil/Accueil.js';
+import Race from  './race/MainRace.js';
 
 class ItemPage extends Component{
     
@@ -59,7 +60,7 @@ class ItemPage extends Component{
                     return("dirt")
               break;
             case 'RACE':
-                    return("race")
+                    return(<div><Race/></div>)
               break;
             case 'REPARATION':
                     return("repa")
