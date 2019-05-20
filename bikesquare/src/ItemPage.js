@@ -5,6 +5,7 @@ import Mainfreestyle from './freestyle/MainFreestyle.js';
 import Accueil from './accueil/Accueil.js';
 import Race from  './race/MainRace.js';
 import Dirt from './dirt/MainDirt.js';
+import Piece from './piece/MainPiece.js';
 
 class ItemPage extends Component{
     
@@ -63,6 +64,9 @@ class ItemPage extends Component{
             case 'RACE':
                     return(<div><Race/></div>)
               break;
+            case 'PIECE':
+                    return(<div><Piece/></div>)
+            break;
             case 'REPARATION':
                     return("repa")
               break;
