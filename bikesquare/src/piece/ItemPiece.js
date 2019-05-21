@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM, {render} from 'react-dom';
 // import { Nav, Navbar, NavItem, MenuItem, NavDropdown, Modal, Jumbotron } from 'react-bootstrap';
 
-class Itemfreestyle extends Component{
+class Itempiece extends Component{
     
     constructor(props){
         super(props);
@@ -23,6 +23,16 @@ class Itemfreestyle extends Component{
             })
         }
     }
+
+    checkQte(){
+        if(this.props.qte<=2){
+            return(<p className="card-text text-danger text-left"><b>il reste {this.props.qte} pieces(s)</b></p>)
+        }else{
+            return(<p className="card-text  text-dark text-left"><b>il reste {this.props.qte} pieces(s)</b></p>)
+        }
+    }
+
+
     render() {
     return (
         <div class="col-3">
@@ -37,7 +47,9 @@ class Itemfreestyle extends Component{
                         </p>
                         <h5 className="card-title text-dark"></h5>
                         <p className="card-text  text-dark">{this.state.libelleSplit}</p>
-                        <a  className="btn btn-primary">En savoir plus</a>              
+                        {this.checkQte()}
+                        <a  className="btn btn-primary">En savoir plus</a> 
+                                  
                     </div>
                 </div>
             </div>
@@ -46,4 +58,4 @@ class Itemfreestyle extends Component{
     );
     }
 }
-export default Itemfreestyle;
+export default Itempiece;

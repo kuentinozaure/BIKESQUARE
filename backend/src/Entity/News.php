@@ -35,7 +35,7 @@ class News
     /**
      * @ORM\Column(type="string",length=100)
      */
-    protected $titre;
+    protected $image;
 
     /**
      * @ORM\Column(type="boolean",length=255)
@@ -67,9 +67,9 @@ class News
         return $this->lien;
     }
 
-    public function getTitre()
+    public function getImage()
     {
-        return $this->titre;
+        return $this->image;
     }
 
     public function getIsVisible()
@@ -105,9 +105,9 @@ class News
         return $this;
     }
 
-    public function setTitre($titre)
+    public function setImage($img)
     {
-        $this->titre = $titre;
+        $this->image = $img;
         return $this;
     }
 

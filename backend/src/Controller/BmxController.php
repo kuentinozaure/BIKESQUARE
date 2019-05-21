@@ -61,7 +61,7 @@ class BmxController extends Controller
         }
         if(count($Bmxs)>1)
         {
-          for($i=0;$i< count($Ufrs);$i++)
+          for($i=0;$i< count($Bmxs);$i++)
           {
             $formatted[$i]=[
                           'id' => $Bmxs[$i]->getId(),

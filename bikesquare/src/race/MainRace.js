@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM, {render} from 'react-dom';
 import Itemrace from './ItemRace.js'
+import axios from 'axios';
 // import { Nav, Navbar, NavItem, MenuItem, NavDropdown, Modal, Jumbotron } from 'react-bootstrap';
 
 class Mainrace extends Component{
@@ -10,7 +11,8 @@ class Mainrace extends Component{
     
         this.state = {
             valeurSearchBar : "",
-            itemFreestyle : []
+            itemFreestyle : [],
+            bmxs : [],
         };
       }
 
@@ -22,6 +24,85 @@ class Mainrace extends Component{
       }
     
     componentDidMount(){
+        axios.get("http://localhost:8000/bmx/")
+            .then(res=>{
+                let tabBmx = []
+                let i = 0;
+                for (i = 0; i < res.data.length; i++) {
+                    if(res.data[i].type == "RACE"){
+                        tabBmx.push(res.data[i]);
+                    }                
+                }
+                this.setState({
+                    bmxs:tabBmx,
+                })
+            }
+        )
+    }
+
+    generateItem(value){
+        let items = [];
+        let i = 0 ;
+        let nbBmx;
+
+        if(value === "nothing in searchbar"){
+            this.state.bmxs.map((bmx, index) =>{
+                items.push(
+                    <Itemrace titre={bmx.titre}
+                                   libelle = {bmx.libelle}
+                                   image = {bmx.image}
+                                   prix = {bmx.prix}
+                                   type = {bmx.type}
+                    />
+                )
+            })
+        }else{
+            let titre ="";
+            let libelle ="";
+            let type = "";
+            nbBmx = 0;
+
+            this.state.bmxs.map((bmx, index) =>{
+                titre = bmx.titre;
+                libelle = bmx.libelle;
+                type = bmx.type;
+
+
+                if(titre.includes(this.state.valeurSearchBar)
+                || libelle.includes(this.state.valeurSearchBar)
+                || type.includes(this.state.valeurSearchBar)
+                ){
+                    nbBmx+=1
+                    items.push(
+                    <Itemrace titre={bmx.titre}
+                                   libelle = {bmx.libelle}
+                                   image = {bmx.image}
+                                   prix = {bmx.prix}
+                                   type = {bmx.type}
+                    />)
+                }
+            }) 
+            if(nbBmx === 0) {
+                items.push(
+                    <div className="alert alert-dark" role="alert">
+                        <h1>Aucun bmx trouvé</h1>
+                    </div>
+                )
+
+            }
+        }
+        return items;
+    }
+
+    display(){
+        let content;
+
+        if (this.state.valeurSearchBar === ""){
+            content = this.generateItem("nothing in searchbar")
+        }else{
+            content = this.generateItem("thing in searchbar")
+        }
+        return content
     }
 
     componentDidUpdate(){
@@ -47,7 +128,9 @@ class Mainrace extends Component{
                 <div className="row">
                     <div className="col-12">
                         <h2>NOS BMX DE RACES</h2>
-                        <Itemrace/>
+                        <div className="row">
+                            {this.display()}
+                        </div>
                     </div>
                 </div>
             </div>
