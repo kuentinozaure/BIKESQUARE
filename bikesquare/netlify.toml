@@ -1,0 +1,4 @@
+[build]
+base = "bikesquare/"
+publish = "bikesquare/build/"
+command = "npm run build"
