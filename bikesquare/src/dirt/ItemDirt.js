@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import ReactDOM, {render} from 'react-dom';
 // import { Nav, Navbar, NavItem, MenuItem, NavDropdown, Modal, Jumbotron } from 'react-bootstrap';
 
-class Itemfreestyle extends Component{
-    
+class Itemdirt extends Component{
+
     constructor(props){
         super(props);
     
         this.state = {
             libelleSplit : "",
         };
-      }
+    }
 
     componentDidMount(){
         if (this.props.libelle.length >=100){
@@ -23,6 +23,7 @@ class Itemfreestyle extends Component{
             })
         }
     }
+
     render() {
     return (
         <div class="col-3">
@@ -33,11 +34,11 @@ class Itemfreestyle extends Component{
                 <div className="tab-content" >
                     <div className="tab-pane fade show active p-3" role="tabpanel" aria-labelledby="one-tab">
                         <p className="card-text">
-                            <img className="img-fluid img-thumbnail" width="100%" src={this.props.image} />
+                            <img className="img-fluid img-thumbnail" width="100%" src={this.props.image}/>
                         </p>
                         <h5 className="card-title text-dark"></h5>
                         <p className="card-text  text-dark">{this.state.libelleSplit}</p>
-                        <a  className="btn btn-primary">En savoir plus</a>              
+                        <a  className="btn btn-primary ">En savoir plus</a>              
                     </div>
                 </div>
             </div>
@@ -46,4 +47,4 @@ class Itemfreestyle extends Component{
     );
     }
 }
-export default Itemfreestyle;
+export default Itemdirt;

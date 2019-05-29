@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM, {render} from 'react-dom';
-import Itemfreestyle from './ItemFreestyle.js'
-// import { Nav, Navbar, NavItem, MenuItem, NavDropdown, Modal, Jumbotron } from 'react-bootstrap';
+import Itemrace from './ItemRace.js'
 import axios from 'axios';
+// import { Nav, Navbar, NavItem, MenuItem, NavDropdown, Modal, Jumbotron } from 'react-bootstrap';
 
-class Mainfreestyle extends Component{
+class Mainrace extends Component{
     
     constructor(props){
         super(props);
@@ -12,7 +12,7 @@ class Mainfreestyle extends Component{
         this.state = {
             valeurSearchBar : "",
             itemFreestyle : [],
-            bmxs : []
+            bmxs : [],
         };
       }
 
@@ -20,6 +20,7 @@ class Mainfreestyle extends Component{
         this.setState({
             valeurSearchBar:e.target.value,
         })
+        console.log(this.state.valeurSearchBar)
       }
     
     componentDidMount(){
@@ -28,7 +29,7 @@ class Mainfreestyle extends Component{
                 let tabBmx = []
                 let i = 0;
                 for (i = 0; i < res.data.length; i++) {
-                    if(res.data[i].type == "STREET"){
+                    if(res.data[i].type == "RACE"){
                         tabBmx.push(res.data[i]);
                     }                
                 }
@@ -47,7 +48,7 @@ class Mainfreestyle extends Component{
         if(value === "nothing in searchbar"){
             this.state.bmxs.map((bmx, index) =>{
                 items.push(
-                    <Itemfreestyle titre={bmx.titre}
+                    <Itemrace titre={bmx.titre}
                                    libelle = {bmx.libelle}
                                    image = {bmx.image}
                                    prix = {bmx.prix}
@@ -73,7 +74,7 @@ class Mainfreestyle extends Component{
                 ){
                     nbBmx+=1
                     items.push(
-                    <Itemfreestyle titre={bmx.titre}
+                    <Itemrace titre={bmx.titre}
                                    libelle = {bmx.libelle}
                                    image = {bmx.image}
                                    prix = {bmx.prix}
@@ -117,7 +118,7 @@ class Mainfreestyle extends Component{
             <div className="col-2">
             </div>
             <div className="col-8">
-                <input className="form-control mr-sm-2 glyphicon glyphicon-search" type="search" placeholder="Rechercher" onChange={e => this.handleSearch(e)} aria-label="Search"/>
+                <input className="form-control mr-sm-2" type="search" placeholder="Rechercher" onChange={e => this.handleSearch(e)} aria-label="Search"/>
             </div>
             <div className="col-2">
             </div>
@@ -126,10 +127,10 @@ class Mainfreestyle extends Component{
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <h2>NOS BMX FREESTYLE</h2>
-                            <div className="row">
-                                {this.display()}
-                            </div>
+                        <h2>NOS BMX DE RACES</h2>
+                        <div className="row">
+                            {this.display()}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,4 +139,4 @@ class Mainfreestyle extends Component{
     );
     }
 }
-export default Mainfreestyle;
+export default Mainrace;
